@@ -1,7 +1,7 @@
 // Lemonade, a base template of good old Framer
 
 import { LemonUI } from './components/LemonUI.js';
-// Uncomment this line to view the examples
+// Uncomment line 5 and line 61, to view the examples.
 // import { Examples } from './components/Examples/Examples.js';
 
 // SETUP ===================================
