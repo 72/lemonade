@@ -7,9 +7,7 @@
 #### How to run:
 
 1. Go to the Lemonade folder.
-2. Run your preferred local server, example type in your terminal:
-
-`live-server`
+2. Run your preferred local server, example type in your terminal: `live-server`
 
 ![workspace-example](demo.gif)
 
@@ -26,7 +24,7 @@ You can delete the Lemonade template and start from scratch.
 
 And in that case, here are notes to help you set up a new project.
 
-# Framer notes and snippets
+# Notes and snippets
 
 - **[Console Log](#console-log)**
 - **[Set Device](#set-device)**
@@ -37,14 +35,6 @@ And in that case, here are notes to help you set up a new project.
 - **[Gotchas](#gotchas)**
 
 ## Console Log
-
-> Framer (CoffeeScript)
-
-```javascript
-print "Check, please"
-```
-
-> Framer Library (JS)
 
 ```javascript
 console.log("Check, please");
