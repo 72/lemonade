@@ -2,7 +2,7 @@
 
 ### A Javascript template built using an obsolete version of Framer.
 
-[Demo](https://lmnd.netlify.app/)
+## [🍋 Demo](https://lmnd.netlify.app/)
 
 #### How to run:
 
