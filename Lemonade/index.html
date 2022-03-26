@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="viewport" content="width=640,initial-scale=0.5,user-scalable=no">
+
+		<title>Lemonade prototype</title>
+
+		<style type="text/css" media="screen">
+
+		* {
+			margin:0;
+			padding:0;
+			border:none;
+			user-select: none;
+		}
+
+		html {
+			margin: 0;
+			overscroll-behavior: none;
+		}
+		body {
+			background: black;
+			font: 28px/1em "Helvetica";
+			color: #FFF;
+			overflow: hidden;
+			-webkit-tap-highlight-color: rgba(0,0,0,0)
+		}
+		a {
+			color: #bfbfbf;
+		}
+		/* Hide browser UI in mobile video players */
+		video::-internal-media-controls-overlay-cast-button {
+			display: none;
+		}
+		</style>
+
+	</head>
+	<body>
+		<script src="framer/framer.js"></script>
+		<script type="module" src="app.js"></script>
+		<script>
+			// Disabling window scroll
+			let _body = document.querySelector('body');
+			_body.style.overflow = 'hidden';
+			_body.style.position = 'fixed';
+		</script>
+	</body>
+</html>
