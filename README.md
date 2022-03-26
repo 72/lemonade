@@ -2,6 +2,8 @@
 
 ### A Javascript template built using an obsolete version of Framer.
 
+[Demo](https://lmnd.netlify.app/)
+
 #### How to run:
 
 1. Go to the Lemonade folder.
@@ -11,15 +13,17 @@
 
 ![workspace-example](demo.gif)
 
-Again, this is a zombie version of old Framer. You should be using something else.
+#### Again, this is a zombie version of old Framer. You should be using something else.
 
 Lemonade simply gives you a template to help you kickoff your own thing.
 
 Most notably, the template comes with a setup `app` layer that you can use as your canvas, and add your content inside it.
-This `app` layer then is scaled by a so that it fits any browser window.
-This is great (I mean, all things considered...) for **remote user research**. Research participants can run your prototype on their device, regardless of which device is it.
+This `app` layer is then scaled by the `fitToScreen` function so that it fits any browser window.
+
+This is great (I mean, all things considered...) for **remote user research**. Research participants can run your prototype on their device, regardless of which device they're using.
 
 You can delete the Lemonade template and start from scratch.
+
 And in that case, here are notes to help you set up a new project.
 
 # Framer notes and snippets
