@@ -11,9 +11,18 @@
 
 ![workspace-example](demo.gif)
 
----
+Again, this is a zombie version of old Framer. You should be using something else.
 
-# Notes and snippets
+Lemonade simply gives you a template to help you kickoff your own thing.
+
+Most notably, the template comes with a setup `app` layer that you can use as your canvas, and add your content inside it.
+This `app` layer then is scaled by a so that it fits any browser window.
+This is great (I mean, all things considered...) for **remote user research**. Research participants can run your prototype on their device, regardless of which device is it.
+
+You can delete the Lemonade template and start from scratch.
+And in that case, here are notes to help you set up a new project.
+
+# Framer notes and snippets
 
 - **[Console Log](#console-log)**
 - **[Set Device](#set-device)**
@@ -195,8 +204,8 @@ console.log(layerA.backgroundColor.color);
 
 ---
 
-I'll continue updating these notes.
-
-I'm using the good old ES5 for now, but that's one of the goals of this experiment: **to try to replicate prototypes on ES5 and ES6. This is just for fun & learning.**
+Notes are WIP, I'll continue to update them and add more examples.
 
 [@72mena](https://twitter.com/72mena)
+
+🍋
