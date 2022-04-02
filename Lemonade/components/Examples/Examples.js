@@ -4,6 +4,7 @@ import { LemonUI } from '../LemonUI.js';
 import { Header } from './Header.js';
 import { MenuButton } from './MenuButton.js';
 import { Ticker } from './Ticker.js';
+import { LottieLayer } from './Lottie-Framer/Lottie-Framer.js';
 
 // Config prototype size here: 
 let prototypeWidth = 375;
@@ -18,6 +19,7 @@ export let Examples = new FlowComponent();
  * - Scroll Component
  * - Page Component
  * - Drag behavior
+ * - Lottie demo
  * 
  * Then, the last section handles the navigation events.
  * - Navigation
@@ -71,7 +73,14 @@ let optionC = new MenuButton({
 });
 optionC.centerX();
 
-menuOptions.height = optionC.maxY;
+let optionD = new MenuButton({
+	y: optionC.maxY + 18,
+	label: "Lottie demo",
+	parent: menuOptions
+});
+optionD.centerX();
+
+menuOptions.height = optionD.maxY;
 menuOptions.center();
 
 // SECTION: SCROLL COMPONENT ==================================
@@ -488,7 +497,6 @@ let indicatorDragAnimationEnd = new Ticker({
 	parent: demoCPanel,
 });
 
-
 // Events
 resetButton.onClick(()=>{
 	lemon.animate({
@@ -529,6 +537,115 @@ lemon.onAnimationEnd(()=>{
 });
 
 
+// SECTION: LOTTIE DEMO ==================================
+
+let sectionLottie = new Layer({
+	name: "Demo D", y: 0,
+	width: prototypeWidth, height: prototypeHeight,
+	backgroundColor: 'white',
+	parent: Examples
+});
+
+let demoDHeader = new Header({
+	label: "Lottie demo",
+	hasBackButton: true,
+	parent: sectionLottie
+});
+
+let lottieExample = new LottieLayer({
+	name: 'LottieExample',
+	path: 'images/lemonade.json',
+	parent: sectionLottie,
+	size: 270,
+	autoplay: false
+});
+lottieExample.center();
+
+let author = new Layer({
+	width: 300, height: 12,
+	y: lottieExample.maxY,
+	backgroundColor: null,
+	parent: sectionLottie
+})
+Utils.labelLayer(author, 'Animation by: Panizk Kazemi, @paniz_kzm_');
+author.style = {
+	fontSize: "10px",
+	color: "#212121"
+};
+author.centerX();
+
+let playback = 1;
+let numOfLoops = 0;
+
+// Next, create a panel to display lottie information.
+let demoDPanel = new Layer({
+	name: "Panel D",
+	width: 343, 
+	height: 100,
+	maxY: prototypeHeight - 32,
+	borderRadius: 18,
+	backgroundColor: '#FFF',
+	shadowBlur: 16,
+	parent: sectionLottie
+});
+demoDPanel.centerX();
+
+let textDirection = new Layer({
+	html: `Direction: ${playback}`,
+	x: 40, y: 10, height: 24,
+	width: 100,
+	backgroundColor: null,
+	color: "#212121",
+	parent: demoDPanel,
+});
+textDirection.style = {
+	fontSize: "12px",
+};
+
+let textLoops = new Layer({
+	html: `Loops: ${numOfLoops}`,
+	x: 170, y: 10, height: 24,
+	width: 100,
+	backgroundColor: null,
+	color: "#212121",
+	parent: demoDPanel,
+});
+textLoops.style = {
+	fontSize: "12px",
+};
+
+let indicatorPlayback = new Ticker({
+	x: 12, y: 50,
+	description: '.setDirection',
+	parent: demoDPanel,
+});
+
+let indicatorLoop = new Ticker({
+	x: 147, y: 50,
+	description: '.onComplete',
+	parent: demoDPanel,
+});
+
+// Events
+
+lottieExample.onClick(()=>{
+	// Inverse playback
+	playback = playback * -1;
+	lottieExample.setDirection(playback);
+	// Reflect in panel
+	textDirection.html = `Direction: ${playback}`;
+	indicatorPlayback.tick();
+});
+
+lottieExample.onComplete(()=>{
+	numOfLoops++;
+	// Reflect in panel
+	textLoops.html = `Loops: ${numOfLoops}`;
+	indicatorLoop.tick();
+});
+
+
+
 // SECTION: NAVIGATION ==================================
 
 // Show the first screen
@@ -546,6 +663,12 @@ demoCHeader.on('didClickBackButton', ()=>{
 	Examples.showPrevious();
 });
 
+demoDHeader.on('didClickBackButton', ()=>{
+	Examples.showPrevious();
+	// Pause lottie animation
+	lottieExample.pause();
+});
+
 optionA.onClick(()=>{
 	Examples.showNext(sectionScrollComponent);
 });
@@ -556,4 +679,10 @@ optionB.onClick(()=>{
 
 optionC.onClick(()=>{
 	Examples.showNext(sectionDrag);
+});
+
+optionD.onClick(()=>{
+	Examples.showNext(sectionLottie);
+	// Play lottie animation
+	lottieExample.play();
 });
